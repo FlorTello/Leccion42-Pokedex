@@ -1,23 +1,56 @@
 'use strict';
+  $(document).ready(function(){
+    // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
+    $('.modal').modal();
+    $('.close').on('click',_=>{
+     $('#modal1').modal('close');
+    });
+  });
+         
+const render = (root,data) => {
+  root.empty();
+  const wrapper = $('<div class="center-align wrapper"></div>');
+  const update = function() {
+    render(root);
+  }
+  wrapper.append(Header(update));
+  if (state.selectedStation == null) {
+    wrapper.append(Search(update));
+  }
+  root.append(wrapper);
+}
 
 const state = {
-  stations: null,
-  selectedStation: null
+  pokemon: null,
+  pokemonActual: null,
+  selectePokemon: {
+                    id:null,
+                    name:null,
+                    description:null,
+                    height:null,
+                    weight:null,
+                    category:null,
+                    ability:null,
+                    types:null,
+                    debility:null,
+                    src:null
+                  }
+
 };
 
 $( _ => {
 
-  getJSON('http://pokeapi.co/api/v2/pokemon/', (err, json) => {
+  getJSON('http://pokeapi.co/api/v2/pokedex/1/', (err, json) => {
 
     if (err) { return alert(err.message);}
 
-    state.stations = json;
-
-    // const root = $('.root');
-    // render(root);
+    state.pokemon = json.pokemon_entries;
+    const root = $('.root');
+    render(root);
   });
 
 });
+
 
 
 // const express     = require('express');

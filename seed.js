@@ -26,7 +26,6 @@ const getJSON = (url, cb) => {
     if (xhr.status !== 200) {
       return cb(new Error('Error loading JSON from ' + url + '(' + xhr.status + ')'));
     }
-    console.log(xhr);
     cb(null, xhr.response);
   });
 
@@ -34,3 +33,26 @@ const getJSON = (url, cb) => {
   xhr.responseType = 'json';
   xhr.send();
 };
+
+const obtenerNombre = (url,id) =>{
+    getJSON('http://pokeapi.co/api/v2/'+url+'/'+id, (err, json) => {
+      
+      if (err) { return alert(err.message);}
+        state.pokemonActual = json;
+      if(url === 'pokemon'){
+        state.selectePokemon.id = json.id;
+        state.selectePokemon.name = json.name;
+        state.selectePokemon.height = json.height;
+        state.selectePokemon.weight = json.weight;
+        state.selectePokemon.abilities = json.abilities;
+        state.selectePokemon.types = json.types;
+        state.selectePokemon.src = 'http://assets.pokemon.com/assets/cms2/img/pokedex/detail/0'+json.id+'.png'
+        // state.pokemonActual.types[0].type.name
+      }else{
+        state.selectePokemon.description = json.flavor_text_entries[3].flavor_text;
+        state.selectePokemon.category = json.genera[2].genus;
+        
+      }
+      
+    });
+}
