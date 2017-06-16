@@ -18,6 +18,7 @@ const render = (root,data) => {
     wrapper.append(Search(update));
   }
   root.append(wrapper);
+  root.append(PokemonModal(update));
 }
 
 const state = {
@@ -39,7 +40,10 @@ const state = {
 };
 
 $( _ => {
-
+    $('.modal').modal();
+        $('.close').on('click',_=>{
+        $('#modal1').modal('close');
+     });
   getJSON('http://pokeapi.co/api/v2/pokedex/1/', (err, json) => {
 
     if (err) { return alert(err.message);}

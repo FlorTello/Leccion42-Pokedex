@@ -16,7 +16,7 @@ const Search = (update) => {
     const filter = input.val();
     reRender(result,filter,update);
   });
-  // reRender(result,'',update);
+  reRender(result,'',update);
 
   return search;
 
@@ -25,7 +25,7 @@ const Search = (update) => {
 const PokemonItem = (pokemon,update) => {
   const item = $('<div class="col s3"></div>');
   const name = $('<h5>'+pokemon.pokemon_species.name+'</h5>');
-  const image = $(`<img class="movie-thumb" src="http://serebii.net/art/th/${pokemon.entry_number}.png" alt="${pokemon.pokemon_species.name}"/>`);
+  const image = $(`<img class="movie-thumb" data-target="modal1" src="http://serebii.net/art/th/${pokemon.entry_number}.png" alt="${pokemon.pokemon_species.name}"/>`);
   // const district = $('<p>'+pokemon.district+'</p>');
   // const button = $('<button>Ir al mapa</button>');
 

@@ -1,11 +1,26 @@
+@font-face {
+  font-family: 'Flexo';
+  src: url("../font/Flexo/Flexo-Regular.otf");
+}
+.f-flexo {
+  font-family: 'Flexo';
+}
 *{
 /*text-align: justify;*/
+    font-family: 'Flexo';
 }
 .close{
     font-weight: lighter;
     position: absolute;
     top: -15px;
     right: 10px;
+}
+.modal{
+    width: 70% !important;
+    max-height: 100% !important;
+}
+.item-carateristicas p{
+    margin:4px;
 }
 .m-d{
     margin: 7px;
