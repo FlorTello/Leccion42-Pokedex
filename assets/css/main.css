@@ -9,7 +9,47 @@
 /*text-align: justify;*/
     font-family: 'Flexo';
 }
-
+.container-fluid{
+  width: 90%;
+  margin-left: 6%;
+}
+.item{
+  height: 250px;
+  width: 190px;
+  margin: 30px 40px;
+  position: relative;
+  overflow: hidden;
+}
+.fondo-img{
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+.item-name{
+  font-size: 1.3rem;
+  position: absolute;
+  bottom: -11px;
+  left: 55px;
+}
+.icon-item{
+  width: 18px;
+  position: absolute;
+  bottom: 20px;
+}
+.icon1{
+  left: 55px;
+}
+.icon2{
+  left: 85px;
+}.icon3{
+  left: 115px;
+}
+.close{
+    font-weight: lighter;
+    position: absolute;
+    top: -15px;
+    right: 10px;
+}
 .modal{
     width: 70% !important;
     max-height: 100% !important;
