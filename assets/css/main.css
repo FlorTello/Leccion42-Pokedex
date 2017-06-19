@@ -20,6 +20,12 @@
   position: relative;
   overflow: hidden;
 }
+.item-modal{
+  height: 270px;
+}
+.item-modal .pokemon{
+  width: 170px;
+}
 .fondo-img{
   position: absolute;
   bottom: 0;
@@ -62,22 +68,25 @@
     margin: 7px;
     box-sizing: content-box;
 }
-.bicho{
+.ground{
     background: #7aa44a;
 }
-.veneno{
+.psychic{
     background: #b685c6;
 }
-.roca{
+.flying{
     background: #a38321;
 }
-.psiquico{
+.poison{
     background: #ef66b9;
 }
-.fuego{
+.fire{
     background: #F17D24;
 }
-.volador{
+.bug{
+    background: #36a4d3;
+}
+.flying,.grass{
     background: -webkit-linear-gradient(#36a4d3 50%, #F9CDAF 20%);  /* For Safari 5.1 to 6.0 */
     background: -o-linear-gradient(#36a4d3 50%, #F9CDAF 20%); /* For Opera 11.1 to 12.0 */
     background: -moz-linear-gradient(#36a4d3 50%, #F9CDAF 20%);  /* For Firefox 3.6 to 15 */

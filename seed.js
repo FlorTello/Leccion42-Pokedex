@@ -39,32 +39,24 @@ const obtenerNombre = (url,id) =>{
                     weight:null, category:null, ability:"", types:null, debility:null,
                     src:null
                   }
-    getJSON('http://pokeapi.co/api/v2/'+url+'/'+id, (err, json) => {
-
-      if (err) { return alert(err.message);}
-        state.pokemonActual = json;
-      if(url === 'pokemon'){
-        state.selectePokemon.id = json.id;
-        state.selectePokemon.name = json.name;
-        state.selectePokemon.height = json.height;
-        state.selectePokemon.weight = json.weight;
-        console.log(json.abilities[0].ability.url);
-        const habilidades = json.abilities;
-        $.each(habilidades,(index,habilidad) => {
-          $.getJSON(habilidad.ability.url,function(response,error){
-            console.log(response);
-            console.log(error);
-            state.selectePokemon.ability +=(response.names[2].name) +'<br>';
-          });
+    $.getJSON('http://pokeapi.co/api/v2/pokemon/'+id, (json, error) => {
+      state.selectePokemon.id = json.id;
+      state.selectePokemon.name = json.name;
+      state.selectePokemon.height = json.height;
+      state.selectePokemon.weight = json.weight;
+      console.log(json.abilities[0].ability.url);
+      var habilidades = json.abilities;
+      $.each(habilidades,(index,habilidad) => {
+        $.getJSON(habilidad.ability.url,function(response,error){
+          state.selectePokemon.ability +=(response.names[2].name) +'<br>';
         });
-        state.selectePokemon.types = json.types;
-        state.selectePokemon.src = 'http://serebii.net/art/th/'+json.id+'.png'
-        // state.pokemonActual.types[0].type.name
-      }else{
-        state.selectePokemon.description = json.flavor_text_entries[3].flavor_text;
-        state.selectePokemon.category = json.genera[2].genus;
-
-      }
-
+      });
+      state.selectePokemon.types = json.types;
+      state.selectePokemon.src = 'http://serebii.net/art/th/'+json.id+'.png'
     });
+    $.getJSON('http://pokeapi.co/api/v2/pokemon-species/'+id,function(response,error){
+      state.selectePokemon.description = response.flavor_text_entries[3].flavor_text;
+      state.selectePokemon.category = response.genera[2].genus;
+    });
+
 }
