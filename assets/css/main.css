@@ -1,6 +1,6 @@
 @font-face {
   font-family: 'Flexo';
-  src: url("../font/Flexo/Flexo-Regular.otf");
+  src: url("../fonts/Flexo/Flexo-Regular.otf");
 }
 .f-flexo {
   font-family: 'Flexo';
@@ -9,15 +9,11 @@
 /*text-align: justify;*/
     font-family: 'Flexo';
 }
-.close{
-    font-weight: lighter;
-    position: absolute;
-    top: -15px;
-    right: 10px;
-}
+
 .modal{
     width: 70% !important;
     max-height: 100% !important;
+    min-height: 80% !important;
 }
 .item-carateristicas p{
     margin:4px;
@@ -45,5 +41,5 @@
     background: -webkit-linear-gradient(#36a4d3 50%, #F9CDAF 20%);  /* For Safari 5.1 to 6.0 */
     background: -o-linear-gradient(#36a4d3 50%, #F9CDAF 20%); /* For Opera 11.1 to 12.0 */
     background: -moz-linear-gradient(#36a4d3 50%, #F9CDAF 20%);  /* For Firefox 3.6 to 15 */
-    background: linear-gradient(#36a4d3 50%, #F9CDAF 20%);  
+    background: linear-gradient(#36a4d3 50%, #F9CDAF 20%);
 }

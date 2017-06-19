@@ -35,8 +35,12 @@ const getJSON = (url, cb) => {
 };
 
 const obtenerNombre = (url,id) =>{
+  state.selectePokemon =  { id:null, name:null, description:null, height:null,
+                    weight:null, category:null, ability:"", types:null, debility:null,
+                    src:null
+                  }
     getJSON('http://pokeapi.co/api/v2/'+url+'/'+id, (err, json) => {
-      
+
       if (err) { return alert(err.message);}
         state.pokemonActual = json;
       if(url === 'pokemon'){
@@ -44,15 +48,23 @@ const obtenerNombre = (url,id) =>{
         state.selectePokemon.name = json.name;
         state.selectePokemon.height = json.height;
         state.selectePokemon.weight = json.weight;
-        state.selectePokemon.abilities = json.abilities;
+        console.log(json.abilities[0].ability.url);
+        const habilidades = json.abilities;
+        $.each(habilidades,(index,habilidad) => {
+          $.getJSON(habilidad.ability.url,function(response,error){
+            console.log(response);
+            console.log(error);
+            state.selectePokemon.ability +=(response.names[2].name) +'<br>';
+          });
+        });
         state.selectePokemon.types = json.types;
-        state.selectePokemon.src = 'http://assets.pokemon.com/assets/cms2/img/pokedex/detail/0'+json.id+'.png'
+        state.selectePokemon.src = 'http://serebii.net/art/th/'+json.id+'.png'
         // state.pokemonActual.types[0].type.name
       }else{
         state.selectePokemon.description = json.flavor_text_entries[3].flavor_text;
         state.selectePokemon.category = json.genera[2].genus;
-        
+
       }
-      
+
     });
 }

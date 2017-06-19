@@ -1,27 +1,22 @@
 'use strict';
-  $(document).ready(function(){
-    // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
-    $('.modal').modal();
-    $('.close').on('click',_=>{
-     $('#modal1').modal('close');
-    });
-  });
-         
 const render = (root,data) => {
   root.empty();
   const wrapper = $('<div class="center-align wrapper"></div>');
+  // const container_modal = $('<div class="container-modal"></div>');
   const update = function() {
     render(root);
   }
+  // root.append(container_modal);
   wrapper.append(Header(update));
   if (state.selectedStation == null) {
     wrapper.append(Search(update));
   }
   root.append(wrapper);
-  root.append(PokemonModal(update));
+  // root.append(PokemonModal(update));
 }
 
 const state = {
+  pokemonSort:null,
   pokemon: null,
   pokemonActual: null,
   selectePokemon: {
@@ -31,7 +26,7 @@ const state = {
                     height:null,
                     weight:null,
                     category:null,
-                    ability:null,
+                    ability:[null],
                     types:null,
                     debility:null,
                     src:null
@@ -40,10 +35,10 @@ const state = {
 };
 
 $( _ => {
-    $('.modal').modal();
-        $('.close').on('click',_=>{
-        $('#modal1').modal('close');
-     });
+  $('.modal').modal();
+  $('.close').on('click' , _ => {
+    $('.modal').modal('close');
+  });
   getJSON('http://pokeapi.co/api/v2/pokedex/1/', (err, json) => {
 
     if (err) { return alert(err.message);}
@@ -51,6 +46,11 @@ $( _ => {
     state.pokemon = json.pokemon_entries;
     const root = $('.root');
     render(root);
+  });
+  $.getJSON('http://pokeapi.co/api/v2/pokemon/',function(response,error){
+    console.log(response);
+    console.log(error);
+    state.pokemonSort= response.results;
   });
 
 });
