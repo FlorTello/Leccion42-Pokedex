@@ -39,7 +39,7 @@ $( _ => {
   $('.close').on('click' , _ => {
     $('.modal').modal('close');
   });
-  getJSON('http://pokeapi.co/api/v2/pokedex/1/', (err, json) => {
+  getJSON('https://pokeapi.co/api/v2/pokedex/1/', (err, json) => {
 
     if (err) { return alert(err.message);}
 
@@ -47,7 +47,7 @@ $( _ => {
     const root = $('.root');
     render(root);
   });
-  $.getJSON('http://pokeapi.co/api/v2/pokemon/',function(response,error){
+  $.getJSON('https://pokeapi.co/api/v2/pokemon/',function(response,error){
     console.log(response);
     console.log(error);
     state.pokemonSort= response.results;
