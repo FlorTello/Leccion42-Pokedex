@@ -39,7 +39,7 @@ const obtenerNombre = (url,id) =>{
                     weight:null, category:null, ability:"", types:null, debility:null,
                     src:null
                   }
-    $.getJSON('http://pokeapi.co/api/v2/pokemon/'+id, (json, error) => {
+    $.getJSON('https://pokeapi.co/api/v2/pokemon/'+id, (json, error) => {
       state.selectePokemon.id = json.id;
       state.selectePokemon.name = json.name;
       state.selectePokemon.height = json.height;
@@ -54,7 +54,7 @@ const obtenerNombre = (url,id) =>{
       state.selectePokemon.types = json.types;
       state.selectePokemon.src = 'http://serebii.net/art/th/'+json.id+'.png'
     });
-    $.getJSON('http://pokeapi.co/api/v2/pokemon-species/'+id,function(response,error){
+    $.getJSON('https://pokeapi.co/api/v2/pokemon-species/'+id,function(response,error){
       state.selectePokemon.description = response.flavor_text_entries[3].flavor_text;
       state.selectePokemon.category = response.genera[2].genus;
     });
